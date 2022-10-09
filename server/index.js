@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json())
 app.use(cors())
 
-const posts = require('./routes/api/post')
+const posts = require('./routes/api/posts')
 app.use('/api/posts', posts)
 
 // handle production
