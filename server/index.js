@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const path = require('path');
 
 const app = express();
 
@@ -12,13 +13,14 @@ const posts = require('./routes/api/post')
 app.use('/api/posts', posts)
 
 // handle production
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
     //static folder
-    app.use(express.static(__dirname + '/public/'))
+    
+    const diretorio = path.basename(__dirname);
+    app.use(express.static(diretorio + '/public/'))
 
     //handle spa
-    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+    app.get(/.*/, (req, res) => res.sendFile(diretorio + '/public/index.html'))
 }
 
 const port = process.env.PORT || 5000;
