@@ -33,9 +33,9 @@ router.delete('/:id', async (req, res) => {
 })
 
 
-
+// mongodb+srv://<username>:<password>@cluster0.pc5st11.mongodb.net/?retryWrites=true&w=majority
 async function loadPostCollection() {
-    const client = await mongodb.MongoClient.connect('mongodb+srv://node-teste:con3ct1@node-study.mkkk17a.mongodb.net/Node-study', {
+    const client = await mongodb.MongoClient.connect('mongodb+srv://kaicmurilo:uakC3n5Yc0NJEgRs@cluster0.b128qjj.mongodb.net/?retryWrites=true&w=majority', {
         useNewUrlParser: true
     })
 
