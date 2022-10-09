@@ -8,10 +8,11 @@ const app = express();
 app.use(bodyParser.json())
 app.use(cors())
 
-const posts = require('./routes/api/posts')
+const posts = require('./routes/api/post')
 app.use('/api/posts', posts)
 
 // handle production
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
     //static folder
     app.use(express.static(__dirname + '/public/'))
