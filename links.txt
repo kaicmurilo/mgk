@@ -5,3 +5,8 @@ https://www.youtube.com/watch?v=X-JZ-QPApUs
 
 fim 
 https://www.youtube.com/watch?v=W-b9KGwVECs
+
+
+adicionando router
+https://vueschool.io/articles/vuejs-tutorials/how-to-use-vue-router-a-complete-tutorial/
+
