@@ -3,9 +3,21 @@ const mongodb = require('mongodb')
 const Link = require('../models/links')
 const router = express.Router();
 
+
+router.get('/:code', async (req, res) => {
+    const code = req.params.code;
+    const resultado = await Link.findOne({
+        where: {
+            code
+        }
+    })
+    if (!resultado) return res.sendStatus(404);
+    resultado.hits++;
+    await resultado.save();
+    res.send(resultado)
+})
 //get
 router.get('/', async (req, res) => {
-    console.log('get url')
     res.send(await Link.findAll({}))
 })
 
@@ -20,32 +32,31 @@ function generateCode() {
 
 //add
 router.post('/new', async (req, res) => {
-    // const url = await loadPostCollection();
-    // await posts.insertOne({
-    //     url: req.body.text,
-    //     createAt: new Date()
-    // })
     const url = req.body.text
     const code = generateCode();
-    console.log('http://localhost:3000/' + code)
     const resultado = await Link.create({
         url,
         code
     })
-    console.log(resultado)
     res.status(201).send();
 })
 
 
 //delete
-// router.delete('/:id', async (req, res) => {
-//     console.log('delete posts')
-//     const posts = await loadPostCollection();
-//     await posts.deleteOne({
-//         _id: mongodb.ObjectId(req.params.id)
-//     })
-//     res.status(200).send()
-// })
+router.delete('/delete/:id', async (req, res) => {
+    var idDel = req.params.id
+    await Link.destroy({
+        where: {
+            id: idDel
+        }
+    }).then(function (rowDeleted) { // rowDeleted will return number of rows deleted
+        if (rowDeleted === 1) {
+            res.status(200).send('Deletado com sucesso')
+        }
+    }, function (err) {
+        res.status(500).send('Erro ao deletar')
+    });
+})
 
 
 // mongodb+srv://<username>:<password>@cluster0.pc5st11.mongodb.net/?retryWrites=true&w=majority

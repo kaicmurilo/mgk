@@ -5,7 +5,6 @@ const router = express.Router();
 
 //get
 router.get('/', async (req, res) => {
-    console.log('get posts')
     const posts = await loadPostCollection();
     res.send(await posts.find({}).toArray())
 })
@@ -24,7 +23,6 @@ router.post('/', async (req, res) => {
 
 //delete
 router.delete('/:id', async (req, res) => {
-    console.log('delete posts')
     const posts = await loadPostCollection();
     await posts.deleteOne({
         _id: mongodb.ObjectId(req.params.id)
