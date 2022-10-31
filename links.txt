@@ -10,3 +10,11 @@ https://www.youtube.com/watch?v=W-b9KGwVECs
 adicionando router
 https://vueschool.io/articles/vuejs-tutorials/how-to-use-vue-router-a-complete-tutorial/
 
+
+
+ping pong
+https://acervolima.com/jogo-pong-em-javascript/
+
+encurtador
+https://www.youtube.com/watch?v=my93C3s7vs4
+
